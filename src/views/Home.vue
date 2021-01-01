@@ -65,7 +65,7 @@ body {
   border-radius: 50%;
   width: 50px;
   line-height: 50px;
-  background: #44281d;
+  background: #4f484a;
   color: white;
   border: 1.5px solid #fbcfce;
   position: absolue;
@@ -83,10 +83,10 @@ body {
 
 .cards {
   position: relative;
-  border: #c4a0bc solid 1px;
+  border: #eabde0 solid 1px;
   height: 210px;
   width: 160px;
-  background-color: #c4a0bc;
+  background-color: #eabde0;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   transition: 0.5s;
 }
