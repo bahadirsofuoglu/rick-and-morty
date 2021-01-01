@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div class="card-title">Episodes</div>
+    <hr />
     <a
       class="indexes"
       v-for="index in 20"
@@ -7,6 +9,7 @@
       @click="fetchEpisodes(index)"
       >{{ index }}</a
     >
+
     <div class="container">
       <div class="cards" v-for="character in characters" :key="character.id">
         <div class="card-img-cplus">
@@ -36,7 +39,7 @@ export default {
   },
   methods: {
     async fetchEpisodes (index) {
-      console.log(index)
+      this.characters = []
       let response = await axios.get(
         `https://rickandmortyapi.com/api/episode/${index}`
       )
@@ -56,7 +59,7 @@ export default {
 </script>
 <style lng="scss">
 body {
-  background-color: #97ce4c;
+  background-color: #95a58b;
 }
 .indexes {
   border-radius: 50%;
@@ -80,10 +83,10 @@ body {
 
 .cards {
   position: relative;
-  border: #dedede solid 1px;
+  border: #c4a0bc solid 1px;
   height: 210px;
   width: 160px;
-  background-color: #e4a788;
+  background-color: #c4a0bc;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   transition: 0.5s;
 }
@@ -91,7 +94,7 @@ body {
   margin-left: -20px;
 }
 .cards:hover {
-  transform: translateY(-100px);
+  transform: translateY(-50px);
   transition: 0.5s;
 }
 .cards:hover {
@@ -134,7 +137,7 @@ body {
 .card-des {
   padding-top: 10px;
   padding-left: 10px;
-  font-size: 10px;
+  font-size: 20px;
   font-weight: 100;
   max-width: 140px;
   color: #767676;
