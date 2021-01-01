@@ -1,5 +1,5 @@
 # rick-and-morty
-
+it's just a basic css exercise, uses rick-and-morty api. This project can show episodes characters.
 ## Project setup
 ```
 npm install
