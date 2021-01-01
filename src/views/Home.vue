@@ -1,43 +1,46 @@
 <template>
-  <div class="slider">
-    <a href="#slide-1">1</a>
-    <a href="#slide-2">2</a>
-    <a href="#slide-3">3</a>
-    <a href="#slide-4">4</a>
-    <a href="#slide-5">5</a>
-
+  <div>
+    <div class="slider">
+      <a v-for="index in 20" :key="index" @click="fetchEpisodes(index)">{{
+        index
+      }}</a>
+    </div>
     <div class="slides">
-      <div id="slide-1">
-        1
-      </div>
-      <div id="slide-2">
-        2
-      </div>
-      <div id="slide-3">
-        3
-      </div>
-      <div id="slide-4">
-        4
-      </div>
-      <div id="slide-5">
-        5
+      <div id="slide-1" v-for="character in characters" :key="character.id">
+        {{ character.name }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
-/* import axios from 'axios' */
+import axios from 'axios'
 export default {
   name: 'Home',
   data () {
     return {
-      episodes: []
+      episodes: [],
+      characters: []
     }
   },
-  mounted () {},
+  mounted () {
+    this.fetchEpisodes()
+  },
   methods: {
-    fetchEpisodes () {}
+    async fetchEpisodes (index) {
+      console.log(index)
+      let response = await axios.get(
+        `https://rickandmortyapi.com/api/episode/${index}`
+      )
+      response.data.characters.forEach(async element => {
+        let res = await axios.get(element)
+
+        this.characters.push({
+          name: res.data.name,
+          image: res.data.image
+        })
+      })
+    }
   }
 }
 </script>
